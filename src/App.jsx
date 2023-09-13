@@ -3,6 +3,7 @@ import './App.css'
 import Cards from './Components/Cards/Cards'
 import Cart from './Components/Cart/Cart'
 import Header from './Components/Header/Header'
+import Swal from 'sweetalert2'
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -12,16 +13,35 @@ function App() {
   const handlerPurchase = (item) => {
     const isFound = cart.find(actor=> actor.id === item.id);
     if(isFound){
-      return alert('already added')
+      return Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Already Purchased',
+        showConfirmButton: false,
+        timer: 1500
+      })
     }
     else{
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Purchased Confirmed',
+        showConfirmButton: false,
+        timer: 1500
+      })
       let totalCost = item.salary;
       cart.forEach(item=>{
         totalCost = totalCost + item.salary;
       })
       const remain = budget - totalCost ;
       if(remain<0){
-        return alert('taka shesh')
+        return Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Budget Limit Over',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
       setCost(totalCost)
       setRemaining(remain)

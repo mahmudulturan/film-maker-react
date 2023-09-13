@@ -2,8 +2,8 @@ import PropTypes from 'prop-types'
 
 const Cart = ({cart, cost, remaining, budget}) => {
     return (
-        <div className="md:w-1/3">
-            <div className='px-4 py-4 bg-gray-100 shadow-lg rounded-lg'>
+        <div className="md:w-1/3 px-4 py-4 my-5 bg-gray-100 shadow-lg rounded-lg ">
+            <div className='md:fixed'>
                 <div className="md:border-b-2 p-2">
                 <div>
                     {
